@@ -4,3 +4,5 @@
 argocd_action: present #define state present/absent for install and uninstall components
 
 argocd_namespace: argocd #dedicated namespace
+
+argocd_k8s_service: LoadBalancer # Argo UI service

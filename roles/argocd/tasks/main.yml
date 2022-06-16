@@ -3,7 +3,7 @@
   shell: kubectl get pod -n "{{ argocd_namespace }}" | wc -l
   changed_when: false
   register: argocd_status
-  run_once: yes
+  run_once: true
 
 - name: ARGOCD INSTALL | Install Pre-requisites
   include_tasks: pre-requisites.yml

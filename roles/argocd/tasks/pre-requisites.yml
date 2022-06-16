@@ -5,4 +5,4 @@
       - openshift
       - pyyaml
       - kubernetes
-  run_once: yes
+  run_once: true

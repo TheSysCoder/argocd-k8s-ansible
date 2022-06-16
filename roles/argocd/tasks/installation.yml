@@ -1,3 +1,14 @@
 ---
 - name: INSTALL ARGOCD | create namespace
   include_tasks: namespace.yml
+
+- name: INSTALL ARGOCD | Deploy argocd on k8s
+  include_tasks: k8s-argo.yml
+
+- name: INSTALL ARGOCD | Patch the argocd UI server as LoadBalancer
+  kubernetes.core.k8s_service:
+    state: "{{ argocd_action }}"
+    name: argocd-server
+    namespace: "{{ argocd_namespace }}"
+    type: LoadBalancer
+  run_once: true

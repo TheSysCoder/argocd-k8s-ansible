@@ -1,0 +1,18 @@
+---
+- run_once: true
+  block:
+    - name: ARGOCD K8S | Download argocd k8s manifest file
+      get_url:
+        url: https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+        dest: /tmp/argocd.yaml
+
+    - name: ARGOCD K8S | Deploy argo on k8s
+      k8s:
+        namespace: "{{ argocd_namespace }}"
+        src: /tmp/argocd.yaml
+        state: "{{ argocd_action }}"
+  always:
+    - name: ARGOCD K8S | removing installation manifest file
+      file:
+        path: /tmp/argocd.yaml
+        state: absent
