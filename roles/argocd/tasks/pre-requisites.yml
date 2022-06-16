@@ -1,0 +1,8 @@
+---
+- name: Installing pre-requisites
+  pip:
+    name:
+      - openshift
+      - pyyaml
+      - kubernetes
+  run_once: yes

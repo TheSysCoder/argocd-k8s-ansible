@@ -1,0 +1,6 @@
+---
+# ARGOCD deployment variables
+
+argocd_action: present #define state present/absent for install and uninstall components
+
+argocd_namespace: argocd #dedicated namespace

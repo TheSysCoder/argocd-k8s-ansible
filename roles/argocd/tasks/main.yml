@@ -1,0 +1,14 @@
+---
+- name: ARGOCD INSTALL | Ensure argocd is installed or not
+  shell: kubectl get pod -n "{{ argocd_namespace }}" | wc -l
+  changed_when: false
+  register: argocd_status
+  run_once: yes
+
+- name: ARGOCD INSTALL | Install Pre-requisites
+  include_tasks: pre-requisites.yml
+  when: argocd_action == "present"
+
+- name: ARGOCD | install argocd
+  include_tasks: installation.yml
+  when: argocd_action == "present"

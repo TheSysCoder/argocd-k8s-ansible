@@ -1,0 +1,8 @@
+---
+- name: ARGOCD NAMESPACE | Creating argocd namespace
+  k8s:
+    api_version: v1
+    kind: Namespace
+    name: "{{ argocd_namespace }}"
+    state: "{{ argocd_action }}"
+  run_once: yes

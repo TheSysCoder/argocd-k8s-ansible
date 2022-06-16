@@ -1,0 +1,3 @@
+---
+- name: INSTALL ARGOCD | create namespace
+  include_tasks: namespace.yml
